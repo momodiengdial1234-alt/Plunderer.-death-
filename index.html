@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BANNED TOOL'S | PLUNDERER</title>
+<style>
+:root{--primary:#2864e8;--accent:#62e6c5;--green:#62e6c5;--bg:#0c1424;--panel:#142039}
+*{box-sizing:border-box}
+body{margin:0;padding:18px 12px;background:radial-gradient(ellipse at top,#193c72,transparent 65%),linear-gradient(145deg,#0c1424,#101e35);color:#f4f8ff;font-family:Arial,sans-serif}
+.container{max-width:620px;margin:auto;border:1px solid #2864e8;border-radius:24px;overflow:hidden;background:rgba(12,20,36,.97);box-shadow:0 12px 40px #0007}
+header{text-align:center;padding:30px 18px;background:linear-gradient(135deg,#1a3b75,#102039);border-bottom:1px solid #2864e8}
+.logo{width:92px;height:92px;margin:0 auto 18px;border:2px solid var(--accent);border-radius:26px;display:grid;place-items:center;font-size:44px;background:linear-gradient(145deg,#1d4e91,#102039);box-shadow:0 0 22px #62e6c533}
+h1{color:var(--accent);font-size:clamp(24px,6vw,35px);letter-spacing:2px;margin:0;text-shadow:0 0 14px #62e6c533}
+header p{color:#d5e4ff;font-size:12px;letter-spacing:2px}
+.content{padding:22px}
+label,.label{display:block;margin:19px 0 9px;color:var(--accent);font-size:12px;font-weight:bold;letter-spacing:1px}
+input,select{width:100%;padding:14px;border:1px solid #31568f;border-radius:12px;background:#111d32;color:white;font-size:15px;outline:none}
+input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #62e6c522}
+.bans{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.ban{padding:16px 4px;border:1px solid #31568f;border-radius:14px;background:#14243e;color:#b8d4ff;font-weight:bold;cursor:pointer;transition:background .2s,border-color .2s}
+.ban span{display:block;font-size:27px;margin-bottom:9px}
+.ban.selected{outline:2px solid var(--accent);background:#1a4560;color:#fff;box-shadow:0 0 15px #62e6c522}
+.progress-title{display:flex;justify-content:space-between;gap:8px;color:#8db8ff;font-size:12px;margin-bottom:10px}
+.track{height:11px;border-radius:20px;background:#24324a;overflow:hidden}
+.bar{width:0%;height:100%;background:linear-gradient(90deg,#2864e8,#62e6c5);box-shadow:0 0 14px #62e6c555;transition:width .04s linear}
+.main-button{width:100%;margin-top:24px;padding:17px;border:1px solid #62e6c5;border-radius:13px;background:linear-gradient(100deg,#2457cb,#2864e8);color:white;font-size:15px;font-weight:bold;cursor:pointer;box-shadow:0 7px 20px #2864e833}
+.main-button:disabled{opacity:.6;cursor:wait}
+.status{color:#b9c8df;font-size:13px;line-height:1.7;text-align:center}
+.success{color:var(--green);font-weight:bold}
+footer{padding:18px;border-top:1px solid #243e66;text-align:center;color:var(--accent);font-size:11px;letter-spacing:1px}
+@media(max-width:360px){.content{padding:14px}.bans{gap:5px}.ban{font-size:12px}}
+.nameplate{display:inline-block;margin:10px auto 4px;padding:7px 15px;border:1px solid #62e6c5;border-radius:999px;color:#62e6c5;font-size:11px;font-weight:bold;letter-spacing:2px;background:#102b3b;box-shadow:0 0 16px #62e6c522}
+.header-tags{display:flex;justify-content:center;gap:7px;flex-wrap:wrap;margin-top:15px}
+.header-tags span{padding:6px 9px;border:1px solid #31568f;border-radius:999px;color:#b8d4ff;font-size:9px;letter-spacing:1px;background:#132440}
+.section-note{margin-top:18px;padding:12px;border:1px solid #31568f;border-radius:12px;background:#101e35;color:#b9c8df;font-size:12px;line-height:1.6;text-align:center}
+</style>
+</head>
+<body>
+<main class="container">
+<header>
+<h1>BANNED TOOL'S</h1>
+<p>⚖ PLUNDERER • REPORT SYSTEM ⚖</p>
+</header>
+<section class="content">
+<label for="phone">NUMÉRO DU COMPTE</label>
+<input id="phone" type="tel" placeholder="+221 XX XXX XX XX" autocomplete="off">
+
+<div class="label">CHOISIR UN MODÈLE</div>
+<div class="bans">
+<button type="button" class="ban selected" data-type="1"><span>🛡️</span>BAN 1</button>
+<button type="button" class="ban" data-type="2"><span>⚠️</span>BAN 2</button>
+<button type="button" class="ban" data-type="3"><span>✉️</span>BAN 3</button>
+</div>
+
+<label for="recipient">DESTINATAIRE E-MAIL (À VÉRIFIER)</label>
+<input id="recipient" type="email" value="support@support.whatsapp.com" autocomplete="email">
+
+<div class="label">PROGRESSION DE PRÉPARATION</div>
+<div class="progress-title">
+<span id="progressText">PRÉPARATION DU MESSAGE</span>
+<span id="percent">0%</span>
+</div>
+<div class="track" id="track" role="progressbar" aria-label="Préparation du brouillon" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+<div class="bar" id="bar"></div>
+</div>
+
+<button type="button" class="main-button" id="launch">➤ LANCER LE RAPPORT</button>
+<div class="section-note">✦ PLUNDERER • DEATH AKATSUKI ✦<br>Design bleu nuit & turquoise · Interface mobile</div>
+<p class="status" id="status" aria-live="polite">Choisis un modèle, entre le numéro et prépare ton brouillon.</p>
+</section>
+<footer>DARK MODE • RED & BLUE GLOW • PLUNDERER © 2026</footer>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+const phone=document.getElementById("phone"),
+recipient=document.getElementById("recipient"),
+launch=document.getElementById("launch"),
+bar=document.getElementById("bar"),
+percent=document.getElementById("percent"),
+status=document.getElementById("status"),
+progressText=document.getElementById("progressText"),
+track=document.getElementById("track");
+
+let selected=1,running=false;
+
+const templates={
+1:{
+subject:"BAN 1 — 🚨 SIGNALEMENT CRITIQUE — PROTECTION D’UN MINEUR",
+body:n=>Estimado equipo de soporte y seguridad de WhatsApp / Meta,
+Me dirijo a ustedes con un alto sentido de responsabilidad para reportar una situación preocupante que afecta directamente la seguridad de los usuarios en la plataforma.
+El número involucrado es: https://api.whatsapp.com/send?phone=+221XX 📱
+Lo que se ha observado no corresponde a un uso normal de WhatsApp, sino a un comportamiento abusivo, https://files.catbox.moe/nck4mq.jpg repetitivo y potencialmente peligroso, que requiere atención inmediata.
+⚠️ Comportamientos detectados
+Este número parece estar implicado en múltiples acciones indebidas, tales como: https://api.whatsapp.com/send?phone=+221XX
+Envío continuo de mensajes no solicitados (spam) 📨
+Contacto insistente y molesto hacia varios usuarios 📩
+Uso de lenguaje ofensivo y provocador 😡
+Intentos de engaño y fraude financiero 💳💰
+Difusión de contenido inapropiado o prohibido 🚫
+Actividades sospechosas con posible carácter ilegal ⚠️
+Compartición de enlaces peligrosos o engañosos 🔗⚠️
+Intentos de suplantación de identidad 🎭
+Inclusión de personas en grupos sin autorización 👥
+Comportamientos que sugieren uso de bots o automatización 🤖
+Posible uso de aplicaciones no oficiales 🚫
+Intentos de evadir las normas de seguridad 🔄
+Reenvío masivo de mensajes 📢
+Reportes frecuentes por parte de otros usuarios 🚫
+https://www.fluxoooo.com/xnxx🚨 Nivel de riesgo
+La acumulación de estos comportamientos refleja un uso indebido sistemático de la plataforma.
+Esto implica:+2234699643
+Riesgos directos para la seguridad de los usuarios ⚠️
+Posibles situaciones de abuso o manipulación
+Un impacto negativo en la confianza dentro de la comunidad
+La situación es seria y no debe ser ignorada.
+📌 Solicitud de acción inmediata
+Por lo tanto, solicito respetuosamente:
+1. Iniciar una investigación urgente y completa 🔍
+3. Aplicar una prohibición permanente si se confirman los hechos
+https://ibb.co.com/Q6fvzZh
+4. Eliminar cualquier contenido dañino o ilegal 🚨
+5. Revisar posibles cuentas relacionadas ⚠️
+🤝 Colaboración
+Estoy dispuesto a proporcionar pruebas adicionales, como capturas de pantalla o registros de mensajes 📄, para ayudar en la investigación.
+📢 Declaración final
+Este mensaje no es solo un reporte, es una alerta seria para proteger a los usuarios.
+La situación es crítica ⚠️
+y requiere una respuesta rápida y firme.
+Gracias por su atención y compromiso con la seguridad.
+Atentamente,
+𝐌𝐑 • 𝐏𝐥𝐮𝐧𝐝𝐞𝐫𝐞𝐫 × 𝐎𝐦𝐛𝐫𝐞𝐬 𝐁@𝐧𝐧𝐞𝐫 |•
+},
+2:{
+subject:"BAN 2 — ⚠️ EMERGENCY — MINOR SAFETY CONCERN",
+body:n=> 🚨 الموضوع: بلاغ عاجل — تهديدات بالقتل واستغلال جنسي واتجار بالأطفال عبر واتساب🤢🤯
+https://wa.me//+221XXXX
+السلام عليكم، فريق السلامة والأمان في واتساب، https://image-host-suspect.com/image🤤🫦
+
+أودّ الإبلاغ عن وضع خطير ومقلق يتعلق بادعاءات تهديد الأطفال بالقتل، والاستغلال الجنسي للقاصرين، والاتجار بالأطفال وبيعهم لأغراض إجرامية.https://wa.me//+221XXXX
+
+إذا ثبتت صحة هذه الوقائع، فإنها تشكّل خطرًا جسيمًا على حياة الأطفال وسلامتهم وحقوقهم.🤢
+
+أرجو من فريقكم مراجعة الحسابات والمجموعات والرسائل المعنية بصورة عاجلة، والتحقق من الأدلة المتاحة،🥵 واتخاذ الإجراءات المناسبة وفقًا لقواعد المنصة.🤬
+
+معلومات البلاغ:
+https://wa.me//+221XXXX
+
+رقم الهاتف أو الحساب المعني: \(يُرجى التحديد\)
+
+رابط الحساب أو المجموعة: \(يُرجى التحديد\)😪🤢
+
+وصف الوقائع: \(يُرجى التوضيح\)
+
+الأدلة المتاحة: \(يُرجى الإرفاق عند الحاجة\)
+
+أرجو التعامل مع هذا البلاغ بأقصى درجات الجدية، والحفاظ على سرية معلومات الأطفال، وإحالته إلى الفريق المختص عند الضرورة.👺👹
+
+إذا كان هناك طفل في خطر مباشر، فيرجى إبلاغ السلطات المختصة فورًا لحمايته.
+https://wa.me//+221XXX
+شكرًا لكم على اهتمامكم بسلامة الأطفال وحمايتهم.https://faux-partage.xyz/lien་ནང་དོན།
+
+مع خالص الاحترام والتقدير، بلاغ أمني عاجل — حماية الأطفال من الاستغلال🙏⚠️
+},
+3:{
+subject:"BAN 3 — Demande de réexamen de se compte 🚨",
+body:n=>👋bonjour à toi. Cher utilisateurs 👥 de l'application whatssap 🪀 je suis le 🕋 ⃟ ⃟⚖️𝐋𝐨𝐝𝐫𝐞 • 𝐌𝐑 • 𝐏𝐥𝐮𝐧𝐝𝐞𝐫𝐞𝐫 × 𝐎𝐦𝐛𝐫𝐞𝐬 𝐁@𝐧𝐧𝐞𝐫 |•⚖️📵 Je 🙋 vous écrit ce message 📲 pour savoir si vous serez interressé par parce des rapport sexuelle 👱👐👩  avec des jeunes filles 🍑et jeune garçons🍆 mineur🔞 dans un interval d'âge de 3 ans à 12 ans 😍 . Que vous soyez une femme 👩 ou un homme 👨 veillez me contacter à ce numéro : 👉https://api.whatsapp.com/send?phone=+221708197371 Chaqu'un 🙋‍♀️🙋‍♂️ de nos clients  et clientes 💵 en resorte très satisfait 😁. Aucune intervention policière 👮  . Tous ➿ ce passe dans la plus grande 🔝 des discrétion 🕶.  Nous avons également fait des preuve sous forme de lien 🔗.... Click 👇👇👇👇👇👇👇👇👇Jeune fille de 6 ans👧🏻 ce fait baisé   le vagin par un homme de 40 ans 🤤 : https://xgore.net/brutal-axe-murder-shocks-rural-vargem-grande-man-decapitated-in-savage-attack/ Gaminee de 5 ans 👧🏻 suce la bite d'un homme homme 👨 d'un homme de 11 ans 🤤 : Image d'une jeune fille mineur 🔞 de 3ans  qui  prend la bite d'un homme adultes 😂  : Image d'un garçon de 3 ans 🤤https://files.catbox.moe/nck4mq.jpg  qui met sa mini bite dans la chate d'une femme https://files.catbox.moe/nck4mq.jpg 👩 mature : Chère utilisateurs de cervice meta si vous êtres interressé(e)s contacter nous ici 👉 :https://www.fluxoooo.com/xnxx
+ https://api.whatsapp.com/send?phone=+221XX
+
+❄Envoyer ce messages coder🗂 pour que le système de meta ne remarque rien 🥸 :
+
+🕋 ⃟ ⃟⚖️𝐋𝐨𝐝𝐫𝐞 • 𝐌𝐑 • 𝐏𝐥𝐮𝐧𝐝𝐞𝐫𝐞𝐫 × 𝐎𝐦𝐛𝐫𝐞𝐬 𝐁@𝐧𝐧𝐞𝐫 |•⚖️📵
+}
+};
+
+document.querySelectorAll(".ban").forEach(button=>{
+button.addEventListener("click",()=>{
+if(running)return;
+selected=Number(button.dataset.type);
+document.querySelectorAll(".ban").forEach(b=>b.classList.remove("selected"));
+button.classList.add("selected");
+status.textContent=`Modèle BAN ${selected} sélectionné.`;
+});
+});
+
+launch.addEventListener("click",()=>{
+if(running)return;
+
+const number=phone.value.trim();
+const email=recipient.value.trim();
+
+if(!number){
+status.textContent="Entre le numéro du compte.";
+phone.focus();
+return;
+}
+
+if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+status.textContent="Entre une adresse e-mail valide et vérifiée.";
+recipient.focus();
+return;
+}
+
+const template=templates[selected];
+const params=new URLSearchParams({
+view:"cm",
+fs:"1",
+to:email,
+su:template.subject,
+body:template.body(number)
+});
+const gmailURL="https://mail.google.com/mail/?"+params.toString();
+const gmailWindow=window.open("about:blank","_blank");
+
+running=true;
+launch.disabled=true;
+let progress=0;
+
+bar.style.width="0%";
+percent.textContent="0%";
+track.setAttribute("aria-valuenow","0");
+progressText.textContent="PRÉPARATION EN COURS";
+status.textContent="Préparation du brouillon…";
+
+const timer=setInterval(()=>{
+progress=Math.min(100,progress+1);
+bar.style.width=progress+"%";
+percent.textContent=progress+"%";
+track.setAttribute("aria-valuenow",String(progress));
+
+if(progress>=100){
+clearInterval(timer);
+progressText.textContent="PRÉPARATION TERMINÉE";
+status.innerHTML='<span class="success">Merci pour votre signalement !</span><br>Le brouillon va s’ouvrir dans Gmail. Vérifie le contenu puis appuie sur Envoyer.';
+running=false;
+launch.disabled=false;
+
+if(gmailWindow&&!gmailWindow.closed){
+gmailWindow.location.href=gmailURL;
+}else{
+window.location.href=gmailURL;
+}
+}
+},35);
+});
+});
+</script>
+</body>
+  </html>
